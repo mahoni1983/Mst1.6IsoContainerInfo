@@ -1,0 +1,29 @@
+Ќазвание текущего ISO контейнера
+SELECT IDNo_InputCont FROM V_TST3_4;
+
+
+“екущий не заполненный т-контейнер:
+SELECT EndDateTime_MST1_6, Mass_MST1_6, DRSMean_MST1_6,DRSMax_MST1_6,  alphaAct_MST1_6, betaAct_MST1_6, gammaAct_MST1_6, Operator_MST1_6
+FROM
+T_MST1_6
+WHERE
+InputContID_MST1_6 = 'BULK'
+
+
+
+—одержание текущего ISO контейнера:
+SELECT EndDateTime_MST1_6, Mass_MST1_6, DRSMean_MST1_6, DRSMax_MST1_6,  alphaAct_MST1_6, betaAct_MST1_6, gammaAct_MST1_6, Operator_MST1_6
+FROM
+T_MST1_6
+WHERE
+InputContID_MST1_6 =    //название текущего ISO контейнера
+
+SELECT IDNo_InputCont FROM V_TST3_4;
+
+
+
+
+UPDATE T_MST1_6
+SET InputContID_MST1_6 = 'BULK_deleted_' & NOW()
+WHERE
+InputContID_MST1_6 = 'BULK'

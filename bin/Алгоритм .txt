@@ -1,0 +1,130 @@
+Регистрация нового iso контейнера:
+добавить новую строку в таблицу T_InputCont
+
+insert into T_InputCont(
+IDNo_InputCont, Type_InputCont, Waste_InputCont, Orig_InputCont, Dest_InputCont, DoseRate_InputCont, DoseRateDate_InputCont, RawMass_InputCont, ActLocation_InputCont, lastAction_InputCont, lastActionModule_InputCont, lastActionDate_InputCont, lastActionOperator_InputCont, DoseRateExit_InputCont, AplhaActivityExit_InputCont, BetaActivityExit_InputCont, DoseRateExitDate_InputCont, WipeTest_InputCont, Remarks_InputCont, ReportFile_InputCont, upDate_InputCont, upUser_InputCont, lastActionText_InputCont) 
+values
+("Test_2017-09-01", "3", "", NULL, NULL, 0, NULL, 0, NULL, "340340", "TST3.3C", "08/30/17 09:40 AM", "TRACKING\Administrator", 0, 0, 0, "01/02/00 12:00 AM", NULL, 0, NULL, "08/30/17 09:40 AM", "TRACKING\Administrator", "Empty Bulk Cont registered");
+
+
+
+T_InputCont
+280 Test_2017-09-01                                                       3                                                                                                                                                                                                          NULL                 NULL                                  0                    NULL                 0 NULL                                340340 TST3.3C                     2017-08-30 09:40:00.000 TRACKING\Administrator                                                    0                           0                          0    2000-01-02 00:00:00.000 NULL               0                                                                                                                                                                                                                                                               NULL                                                                                                                                                                                                     2017-08-30 09:40:00.000 TRACKING\Administrator                             Empty Bulk Cont registered   
+
+
+
+
+
+
+
+
+============================
+
+Замерен т-контейнер:
+
+
+
+Приходят данные измерения с MST1.6 в таблицу T_MST1_6Act (должны быть не нулевые, здесь не работающий анализатор)
+T_MST1_6Act
+ID_MST1_6Act         MeasID_MST1_6Act     Nuklide_MST1_6Act    Activity_MST1_6Act       ActivitySig_MST1_6Act    DetectionLimit_MST1_6Act upDate_MST1_6Act        upUser_MST1_6Act                                  
+                2723                  405 Co60                                        0                        0                        0                    NULL NULL                                              
+                2724                  405 Cs137                      13199.999928474401       6599.9999642371995         13.1999999284744                    NULL NULL                                              
+                2725                  405 Eu152                      206000.00023841904       103000.00011920952       206.00000023841901                    NULL NULL                                              
+                2726                  405 Ag110m                                      0                        0                        0                    NULL NULL                                              
+                2727                  405 Am241                                       0                        0                        0                    NULL NULL                                              
+                2728                  405 C14                                         0                        0                        0                    NULL NULL                                              
+                2729                  405 Cl36                                        0                        0                        0                    NULL NULL                                              
+                2730                  405 Cm244                                       0                        0                        0                    NULL NULL                                              
+                2731                  405 Cs134                                       0                        0                        0                    NULL NULL                                              
+                2732                  405 Cs135                                       0                        0                        0                    NULL NULL                                              
+                2733                  405 Fe55                                        0                        0                        0                    NULL NULL                                              
+                2734                  405 I129                                        0                        0                        0                    NULL NULL                                              
+                2735                  405 Mn54                                        0                        0                        0                    NULL NULL                                              
+                2736                  405 Nb93m                                       0                        0                        0                    NULL NULL                                              
+                2737                  405 Nb94                                        0                        0                        0                    NULL NULL                                              
+                2738                  405 Ni59                                        0                        0                        0                    NULL NULL                                              
+                2739                  405 Ni63                                        0                        0                        0                    NULL NULL                                              
+                2740                  405 Np237                                       0                        0                        0                    NULL NULL                                              
+                2741                  405 Pu238                                       0                        0                        0                    NULL NULL                                              
+                2742                  405 Pu239                                       0                        0                        0                    NULL NULL                                              
+                2743                  405 Pu240                                       0                        0                        0                    NULL NULL                                              
+                2744                  405 Pu241                                       0                        0                        0                    NULL NULL                                              
+                2745                  405 Sr90                                        0                        0                        0                    NULL NULL                                              
+                2746                  405 Tc99                                        0                        0                        0                    NULL NULL                                              
+                2747                  405 U234                                        0                        0                        0                    NULL NULL                                              
+                2748                  405 U235                                        0                        0                        0                    NULL NULL                                              
+                2749                  405 U238                                        0                        0                        0                    NULL NULL                                              
+                2750                  405 Zn65                                        0                        0                        0                    NULL NULL                                              
+                2751                  405 Zr93                                        0                        0                        0                    NULL NULL 
+
+
+
+
+В таблицу T_MST1_6 добавляется строка с результатами измерения
+
+ID_MST1_6            MeasID_MST1_6        InputContID_MST1_6                                 Barcode_MST1_6  StartDateTime_MST1_6    EndDateTime_MST1_6      Date_MST1_6             Mass_MST1_6 DRSMean_MST1_6 DRSMedian_MST1_6 DRSMax_MST1_6  alphaAct_MST1_6 betaAct_MST1_6 gammaAct_MST1_6 LODCs137_MST1_6 LODCo60_MST1_6 LODCalpha_MST1_6 Operator_MST1_6           Result_MST1_6 upDate_MST1_6           upUser_MST1_6                                     
+                 103                  405 BULK                                               NULL            2017-09-01 13:48:54.000 2017-09-01 13:54:13.000                    NULL         500        0.00012          0.00011   1.5000001E-4      0.71334064      34750.805           13200            13.2             -1               -1 admin                                 1 2017-09-01 13:54:14.300 TRACKING\Administrator                            
+
+
+
+
+=============================
+Нажатие кнопки Temp_report
+
+Изменилась запись (BULK) в таблице T_InputCont (поле: ReportFile_InputCont)
+
+T_InputCont
+ID_InputCont         IDNo_InputCont                                     Type_InputCont       Waste_InputCont                                                                                                                                                                                          Orig_InputCont       Dest_InputCont       DoseRate_InputCont DoseRateDate_InputCont  RawMass_InputCont ActLocation_InputCont lastAction_InputCont lastActionModule_InputCont lastActionDate_InputCont lastActionOperator_InputCont                       DoseRateExit_InputCont   AplhaActivityExit_InputCont BetaActivityExit_InputCont DoseRateExitDate_InputCont WipeTest_InputCont Remarks_InputCont                                                                                                                                                                                                                                               ReportFile_InputCont                                                                                                                                                                                     upDate_InputCont        upUser_InputCont                                   lastActionText_InputCont     
+
+                 219 BULK                                                                  3                                                                                                                                                                                                          NULL                 NULL                                  0                    NULL                 0 NULL                                     0 0                                              NULL                                                                           0                           0                          0    1900-01-01 00:00:00.000 NULL               Dummy Container record for pieces not filled                                                                                                                                                                                                                    D:\Reports\TMP_Test_2017-09-01_201709010208.pdf                                                                                                                                                                             NULL NULL                                               unknown                      
+
+
+
+
+
+
+=========================================
+Нажатие кнопки FILL IN
+
+в таблице T_MST1_6 переименование названия с BULK в название iso-контейнера.
+
+T_MST1_6
+ID_MST1_6            MeasID_MST1_6        InputContID_MST1_6                                 Barcode_MST1_6  StartDateTime_MST1_6    EndDateTime_MST1_6      Date_MST1_6             Mass_MST1_6 DRSMean_MST1_6 DRSMedian_MST1_6 DRSMax_MST1_6  alphaAct_MST1_6 betaAct_MST1_6 gammaAct_MST1_6 LODCs137_MST1_6 LODCo60_MST1_6 LODCalpha_MST1_6 Operator_MST1_6           Result_MST1_6 upDate_MST1_6           upUser_MST1_6                                     
+-------------------- -------------------- -------------------------------------------------- --------------- ----------------------- ----------------------- ----------------------- ----------- -------------- ---------------- -------------- --------------- -------------- --------------- --------------- -------------- ---------------- ------------------------- ------------- ----------------------- --------------------------------------------------
+                 103                  405 Test_2017-09-01                                    NULL            2017-09-01 13:48:54.000 2017-09-01 13:54:13.000                    NULL         500        0.00012          0.00011   1.5000001E-4      0.71334064     0.71334064           13200            13.2             -1               -1 admin                                 1 2017-09-01 13:54:14.300 TRACKING\Administrator                            
+
+
+
+Изменилась запись (BULK) в таблице T_InputCont (поле: ReportFile_InputCont)
+T_InputCont
+ID_InputCont         IDNo_InputCont                                     Type_InputCont       Waste_InputCont                                                                                                                                                                                          Orig_InputCont       Dest_InputCont       DoseRate_InputCont DoseRateDate_InputCont  RawMass_InputCont ActLocation_InputCont lastAction_InputCont lastActionModule_InputCont lastActionDate_InputCont lastActionOperator_InputCont                       DoseRateExit_InputCont   AplhaActivityExit_InputCont BetaActivityExit_InputCont DoseRateExitDate_InputCont WipeTest_InputCont Remarks_InputCont                                                                                                                                                                                                                                               ReportFile_InputCont                                                                                                                                                                                     upDate_InputCont        upUser_InputCont                                   lastActionText_InputCont     
+
+                 219 BULK                                                                  3                                                                                                                                                                                                          NULL                 NULL                                  0                    NULL                 0 NULL                                     0 0                                              NULL                                                                           0                           0                          0    1900-01-01 00:00:00.000 NULL               Dummy Container record for pieces not filled                                                                                                                                                                                                                    NULL                                                                                                
+
+
+
+                                                                                                                        NULL NULL                                               unknown                      
+==========================================
+
+Нажатие кнопки full out
+
+
+Обновление записи в таблице TB_Reports
+TB_Reports
+ID                   TSTName                                            TemplateFile                                                                                                                                                                                                                                               ReportPath                                                                                                                                                                                                                                                 PDFPrinterName                                     PDFFileAuto                                                                                                                                                                                                                                                CurPDFFile                                                                                                                                                                                                                                                
+
+                   4 TST3.3                                             D:\Reports\Template\ReportWPDeclarationBulk.xls                                                                                                                                                                                                            D:\Reports                                                                                                                                                                                                                                                 PDFCreator                                         D:\TempPDF\PDFTrack.pdf                                                                                                                                                                                                                                    D:\Reports\Test_2017-09-01_201709010216.pdf                                                                                                          
+
+
+
+
+
+Обновление записи в таблице T_InputCont
+
+T_InputCont
+ID_InputCont         IDNo_InputCont                                     Type_InputCont       Waste_InputCont                                                                                                                                                                                          Orig_InputCont       Dest_InputCont       DoseRate_InputCont DoseRateDate_InputCont  RawMass_InputCont ActLocation_InputCont lastAction_InputCont lastActionModule_InputCont lastActionDate_InputCont lastActionOperator_InputCont                       DoseRateExit_InputCont   AplhaActivityExit_InputCont BetaActivityExit_InputCont DoseRateExitDate_InputCont WipeTest_InputCont Remarks_InputCont                                                                                                                                                                                                                                               ReportFile_InputCont                                                                                                                                                                                     upDate_InputCont        upUser_InputCont                                   lastActionText_InputCont     
+
+
+                 280 Test_2017-09-01                                                       3 G3 Waste                                                                                                                                                                                                 NULL                 NULL                                  0                    NULL                 0                                     340000 TST3.3                     2017-09-01 14:16:21.0500 NT AUTHORITY\SYSTEM                                                      10                           0                          0 2017-09-01 14:16:19.647000 NULL               0                                                                                                                                                                                                                                                               D:\Reports\Test_2017-09-01_201709010216.pdf                                                                                                                                                              2017-09-01 14:16:19.647 NT AUTHORITY\SYSTEM                                ISO Bulk Cont Exported       
+
+Удаление строки в таблице V_TST3_4
